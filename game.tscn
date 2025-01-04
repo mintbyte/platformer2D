@@ -1,0 +1,70 @@
+[gd_scene load_steps=12 format=3 uid="uid://bb7u10k27xs2q"]
+
+[ext_resource type="Script" path="res://game.gd" id="1_dr47k"]
+[ext_resource type="Script" path="res://player.gd" id="2_cjdjs"]
+[ext_resource type="Script" path="res://floor.gd" id="3_0o3to"]
+[ext_resource type="Script" path="res://animatable_body_2d.gd" id="4_axn3k"]
+[ext_resource type="Script" path="res://sprite_2dfloor.gd" id="4_dnjpk"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_o5jpw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_enw55"]
+size = Vector2(2, 2.12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4d1p7"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_wlxty"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_fwaoi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w4x7x"]
+size = Vector2(386, 26)
+
+[node name="Game" type="Node2D"]
+position = Vector2(-6, 390)
+script = ExtResource("1_dr47k")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(491, -104)
+scale = Vector2(50, 50)
+script = ExtResource("2_cjdjs")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(1.68, -0.00999999)
+scale = Vector2(1, 1.06)
+texture = SubResource("PlaceholderTexture2D_o5jpw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(1.68, -0.00999975)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_enw55")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(-29, 88)
+scale = Vector2(7907.99, 49.3909)
+script = ExtResource("3_0o3to")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(0.169, 12.46)
+shape = SubResource("RectangleShape2D_4d1p7")
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor/CollisionShape2D"]
+physics_interpolation_mode = 1
+position = Vector2(0.411, -9.52)
+scale = Vector2(1.151, 1)
+texture = SubResource("PlaceholderTexture2D_wlxty")
+script = ExtResource("4_dnjpk")
+
+[node name="Platform" type="AnimatableBody2D" parent="."]
+position = Vector2(211, 0)
+scale = Vector2(0.943778, 0.996557)
+script = ExtResource("4_axn3k")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform"]
+position = Vector2(231, 141)
+scale = Vector2(387.305, 26.0085)
+texture = SubResource("PlaceholderTexture2D_fwaoi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+position = Vector2(231, 141)
+shape = SubResource("RectangleShape2D_w4x7x")
