@@ -47,7 +47,7 @@ func _physics_process(delta):
 func handle_screen_wrap():
 	var sprite_width = $Sprite2D.texture.get_width() * $Sprite2D.scale.x
 	var sprite_height = $Sprite2D.texture.get_height() * $Sprite2D.scale.y
-	# test 
+	# cheese 
 	# Wrap horizontally
 	if position.x < -sprite_width / 2:
 		position.x += SCREEN_WIDTH + sprite_width
